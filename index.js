@@ -2,15 +2,12 @@ const express = require('express')
 
 const app = express();
 
-//ROTA GET DE TESTE
-app.get('/', (req, res) => {
-    res.send('RESPOSTA DA ROTA RAIZ');
-})
+// IMPORTACAO DO ARQUIVO DE ROTAS LIVRO
+const livrosController = require('./controller/LivroController');
 
-//ROTA GET DE LISTAGEM DE DENTISTAS
-app.get('/dentistas', (req, res) => {
-    res.send('RESPOSTA DA ROTA DE LISTAGEM');
-})
+app.use(express.json());
+
+app.use('/', livrosController)
 
 app.listen(3000, () => {
     console.log('Aplicação executada com sucesso em - http://localhost:3000')
